@@ -163,7 +163,7 @@ export const totalAmount = async (req: Request, res: Response) => {
 export const history = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { page } = req.body;
-  const limit = 5;
+  const limit = 10;
   const offset = (page - 1) * limit;
   const combinedHistory = await prisma.$queryRaw`
     SELECT amount, balance, date, "user" AS id, 'deposits' AS type FROM "Deposit" WHERE "user" = ${id}
